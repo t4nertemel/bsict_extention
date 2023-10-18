@@ -1,14 +1,14 @@
 /* Cookie confirm btn color */
 .freeprivacypolicy-com---palette-light .cc-nb-okagree {
-  background-color: #2d3d92 !important;
+  background-color: #194d33 !important;
 }
 .freeprivacypolicy-com---palette-light .cc-nb-reject {
-  background-color: #2d3d92 !important;
+  background-color: #d32f2f !important;
 }
-  .freeprivacypolicy-com---palette-light .cc-nb-changep {
-    background-color: #c4c4c4 !important;
-    color: #111;
-  }
+.freeprivacypolicy-com---palette-light .cc-nb-changep {
+  background-color: #c4c4c4 !important;
+  color: #222;
+}
 
   /* BSICT Custom hover styles */
 /* color to Grayscale */
