@@ -61,7 +61,11 @@ function login_background_image() {
   }
   add_action('login_head', 'login_background_image');
 /*------------------------------------------------*/
-
+/*-- Enqueue custom CSS file --*/
+function sictext_enqueue_styles() {
+  wp_enqueue_style( 'sictext-custom-styles', plugins_url( '/css/custom-styles.css', __FILE__ ), array(), '1.0' );
+}
+/*------------------------------------------------*/
 /* Cookie Consent Script */
 function cookie_javascript() {
   ?>
