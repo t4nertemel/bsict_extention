@@ -24,8 +24,7 @@
  * Text Domain:       bsict-extention
  * Domain Path:       /languages
  */
-/*------------------------------------------------*/
-/* SICT Login Logo */
+/*------- SICT Login Logo --------*/
 function my_login_logo() { ?>
   <style type="text/css">
       #login h1 a, .login h1 a {
@@ -50,8 +49,7 @@ function my_login_logo_url_title() {
 }
 add_filter( 'login_headertitle', 'my_login_logo_url_title' );
 
-/*------------------------------------------------*/
-/* Login BG Image */
+/*------- Login BG Image --------*/
 function login_background_image() {
   echo '<style type="text/css">
   body.login{
@@ -60,13 +58,15 @@ function login_background_image() {
   </style>';
   }
   add_action('login_head', 'login_background_image');
-/*------------------------------------------------*/
-/*-- Enqueue custom CSS file --*/
+
+/*------- Enqueue custom CSS file --------*/
 function sictext_enqueue_styles() {
   wp_enqueue_style( 'sictext-custom-styles', plugins_url( '/css/custom-styles.css', __FILE__ ), array(), '1.0' );
 }
-/*------------------------------------------------*/
-/* Cookie Consent Script */
+// Hook the function to the wp_enqueue_scripts action hook
+add_action( 'wp_enqueue_scripts', 'sictext_enqueue_styles' );
+
+/*------- Cookie Consent Script */
 function cookie_javascript() {
   ?>
 <!-- Cookie Consent by FreePrivacyPolicy.com https://www.FreePrivacyPolicy.com -->
@@ -83,7 +83,6 @@ cookieconsent.run({"notice_banner_type":"simple","consent_type":"express","palet
 <!-- Below is the link that users can use to open Preferences Center to change their preferences. Do not modify the ID parameter. Place it where appropriate, style it as needed. -->
 
 <a href="#" id="open_preferences_center">Update cookies preferences</a>
-
   <?php
 }
 add_action('wp_footer', 'cookie_javascript');
