@@ -93,6 +93,10 @@ directory take precedence. For example, `/assets/screenshot-1.png` would win ove
 
 == Changelog ==
 
+= 0.7 =
+* Disable Update Nags
+* Added function to remove update nags, all updates to be completed through Main WP.
+
 = 0.6 =
 * Rebuilt plugin adding new BSICT Plugin page to setting page
 * When active this plugin will customise the login page for BSICT

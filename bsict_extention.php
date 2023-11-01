@@ -89,6 +89,7 @@ add_action('wp_footer', 'cookie_javascript');
 /*------------------------------------------------*/
 
 // Add a settings page to the admin menu
+// Add a settings page to the admin menu
 add_action('admin_menu', 'bsict_plugin_add_admin_menu');
 function bsict_plugin_add_admin_menu() {
   add_options_page('BSICT Plugin Settings', 'BSICT Plugin', 'manage_options', 'bsict-plugin-settings', 'bsict_plugin_settings_page');
