@@ -9,14 +9,14 @@
  * that starts the plugin.
  *
  * @link              https://www.linkedin.com/in/taner-temel-ba7b9844
- * @since             0.0.4
+ * @since             0.0.1
  * @package           Bsict_Extention
  *
  * @wordpress-plugin
  * Plugin Name:       Bolton SICT Extention
  * Plugin URI:        https://www.bolton365.net
  * Description:       Extend Bolton SICT site functionality, do not disable it.
- * Version:           0.0.6
+ * Version:           0.0.7
  * Author:            Taner Temel
  * Author URI:        https://www.linkedin.com/in/taner-temel-ba7b9844
  * License:           GPL-2.0+
