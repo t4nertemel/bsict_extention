@@ -24,7 +24,12 @@
  * Text Domain:       bsict-extention
  * Domain Path:       /languages
  */
-/*------- SICT Login Logo --------*/
+/*------------------------------------------------*/
+// Include the new admin settings page file
+require_once( plugin_dir_path( __FILE__ ) . 'bsict_extention_admin.php' );
+/*------------------------------------------------*/
+
+/* SICT Login Logo */
 function my_login_logo() { ?>
   <style type="text/css">
       #login h1 a, .login h1 a {
@@ -49,7 +54,8 @@ function my_login_logo_url_title() {
 }
 add_filter( 'login_headertitle', 'my_login_logo_url_title' );
 
-/*------- Login BG Image --------*/
+/*------------------------------------------------*/
+/* Login BG Image */
 function login_background_image() {
   echo '<style type="text/css">
   body.login{
@@ -58,22 +64,22 @@ function login_background_image() {
   </style>';
   }
   add_action('login_head', 'login_background_image');
-
-/*------- Enqueue custom CSS file --------*/
+/*------------------------------------------------*/
+/*-- Enqueue custom CSS file --*/
 function sictext_enqueue_styles() {
   wp_enqueue_style( 'sictext-custom-styles', plugins_url( '/css/custom-styles.css', __FILE__ ), array(), '1.0' );
 }
 // Hook the function to the wp_enqueue_scripts action hook
 add_action( 'wp_enqueue_scripts', 'sictext_enqueue_styles' );
-
-/*------- Cookie Consent Script */
+/*------------------------------------------------*/
+/* Cookie Consent Script */
 function cookie_javascript() {
   ?>
 <!-- Cookie Consent by FreePrivacyPolicy.com https://www.FreePrivacyPolicy.com -->
 <script type="text/javascript" src="//www.freeprivacypolicy.com/public/cookie-consent/4.1.0/cookie-consent.js" charset="UTF-8"></script>
 <script type="text/javascript" charset="UTF-8">
 document.addEventListener('DOMContentLoaded', function () {
-cookieconsent.run({"notice_banner_type":"simple","consent_type":"express","palette":"light","language":"en","page_load_consent_levels":["strictly-necessary"],"notice_banner_reject_button_hide":false,"preferences_center_close_button_hide":false,"page_refresh_confirmation_buttons":false});
+cookieconsent.run({"notice_banner_type":"standalone","consent_type":"express","palette":"light","language":"en","page_load_consent_levels":["strictly-necessary"],"notice_banner_reject_button_hide":false,"preferences_center_close_button_hide":false,"page_refresh_confirmation_buttons":false,"website_name":"Schools ICT","website_privacy_policy_url":"/privacy-policy/"});
 });
 </script>
 
@@ -83,60 +89,9 @@ cookieconsent.run({"notice_banner_type":"simple","consent_type":"express","palet
 <!-- Below is the link that users can use to open Preferences Center to change their preferences. Do not modify the ID parameter. Place it where appropriate, style it as needed. -->
 
 <a href="#" id="open_preferences_center">Update cookies preferences</a>
+
   <?php
 }
 add_action('wp_footer', 'cookie_javascript');
 /*------------------------------------------------*/
-
-// Add a settings page to the admin menu
-// Add a settings page to the admin menu
-add_action('admin_menu', 'bsict_plugin_add_admin_menu');
-function bsict_plugin_add_admin_menu() {
-  add_options_page('BSICT Plugin Settings', 'BSICT Plugin', 'manage_options', 'bsict-plugin-settings', 'bsict_plugin_settings_page');
-}
-
-// Display the settings page
-function bsict_plugin_settings_page() {
-  ?>
-  <div class="wrap">
-    <h1><?php echo esc_html(get_admin_page_title()); ?></h1>
-
-    <form action="options.php" method="post">
-      <?php settings_fields('bsict_plugin_settings'); ?>
-
-      <table class="form-table">
-        <tbody>
-          <tr>
-            <th scope="row"><label for="bsict_plugin_function_name">Function name:</label></th>
-            <td><input type="text" id="bsict_plugin_function_name" name="bsict_plugin_function_name" value="<?php echo esc_attr(get_option('bsict_plugin_function_name')); ?>" /></td>
-          </tr>
-          <tr>
-            <th scope="row"><label for="bsict_plugin_function_code">Function code:</label></th>
-            <td><textarea id="bsict_plugin_function_code" name="bsict_plugin_function_code" rows="10" cols="50"><?php echo esc_attr(get_option('bsict_plugin_function_code')); ?></textarea></td>
-          </tr>
-        </tbody>
-      </table>
-
-      <p class="submit">
-        <input type="submit" name="submit" class="button-primary" value="Save Changes" />
-      </p>
-    </form>
-  </div>
-  <?php
-}
-
-// Register the settings
-register_setting('bsict_plugin_settings', 'bsict_plugin_function_name');
-register_setting('bsict_plugin_settings', 'bsict_plugin_function_code');
-
-// Add the function to the WordPress environment
-add_action('plugins_loaded', 'bsict_plugin_add_function');
-function bsict_plugin_add_function() {
-  $function_name = get_option('bsict_plugin_function_name');
-  $function_code = get_option('bsict_plugin_function_code');
-
-  if (!empty($function_name) && !empty($function_code)) {
-    eval($function_code);
-  }
-}
 ?>
