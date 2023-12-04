@@ -78,7 +78,23 @@ function fb_script_enqueue_header_script() {
 
 // Hook the function to the wp_body_open action hook
 add_action( 'wp_body_open', 'fb_script_enqueue_header_script' );
+/*------------------------------------------------*/
+// Add the script to the wp_enqueue_scripts hook
+add_action('wp_enqueue_scripts', 'my_enqueue_scripts');
+function my_enqueue_scripts() {
+  // Register the script
+  wp_register_script(
+    'my-script',
+    plugins_url('/js/gh-snow.js', __FILE__),
+    array('jquery'),
+    '1.0.0',
+    true
+  );
 
+  // Enqueue the script
+  wp_enqueue_script('my-script');
+}
+/*------------------------------------------------*/
 = What about foo bar? =
 
 Answer to foo bar dilemma.
@@ -94,8 +110,8 @@ directory take precedence. For example, `/assets/screenshot-1.png` would win ove
 == Changelog ==
 
 = 0.7 =
-* Removed Disable Update Nags and created new admin file
-* Moved admin settings to a new bsict_extention_admin.php file.
+* Added snow storm effect.
+* Please add above now.
 
 = 0.6 =
 * Rebuilt plugin adding new BSICT Plugin page to setting page
