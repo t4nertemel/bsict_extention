@@ -3,6 +3,17 @@
 add_action('admin_menu', 'bsict_plugin_add_admin_menu');
 function bsict_plugin_add_admin_menu() {
   add_options_page('BSICT Plugin Settings', 'BSICT Plugin', 'manage_options', 'bsict-plugin-settings', 'bsict_plugin_settings_page');
+
+  // Hide the admin settings page to everyone other than the `temelt` admin.
+  function hide_admin_settings_page() {
+    global $current_user;
+
+    if ($current_user->user_login !== 'temelt') {
+      remove_menu_page('bsict-plugin-settings');
+    }
+  }
+
+  add_action('admin_menu', 'hide_admin_settings_page');
 }
 
 // Display the settings page
