@@ -1,0 +1,57 @@
+/* Global dashboard color scheme */
+add_filter( 'get_user_option_admin_color', 'update_user_option_admin_color', 5 );
+function update_user_option_admin_color( $color_scheme ) {
+    $color_scheme = 'midnight';
+    return $color_scheme;
+}
+/*---------------------------------------------*/
+/* Sender email address */
+function wpb_sender_email( $original_email_address ) {
+    return 'stmll@bolton.education';
+}
+/* Function to change sender name */
+function wpb_sender_name( $original_email_from ) {
+    return 'St Matthews LL Primary Bolton';
+}
+/* Hooking up our functions to WordPress filters  */
+add_filter( 'wp_mail_from', 'wpb_sender_email' );
+add_filter( 'wp_mail_from_name', 'wpb_sender_name' );
+
+/*------------------------------------------------*/
+// Enqueue and add Facebook widget script right after the opening <body> tag*/
+function sictext_enqueue_header_script() {
+    echo '<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v18.0&appId=1934483216728901&autoLogAppEvents=1" nonce="HYRkhqMl"></script>';
+}
+
+// Hook the function to the wp_body_open action hook
+add_action( 'wp_body_open', 'sictext_enqueue_header_script' );
+/*------------------------------------------------*/
+// Add the script to the wp_enqueue_scripts hook
+add_action('wp_enqueue_scripts', 'my_enqueue_scripts');
+function my_enqueue_scripts() {
+  // Register the script
+  wp_register_script(
+    'my-script',
+    plugins_url('/js/gh-snow.js', __FILE__),
+    array('jquery'),
+    '1.0.0',
+    true
+  );
+
+  // Enqueue the script
+  wp_enqueue_script('my-script');
+}
+/*------------------------------------------------*/
+/* Script for school name and link to privacy policy */
+<script type="text/javascript" src="//www.freeprivacypolicy.com/public/cookie-consent/4.1.0/cookie-consent.js" charset="UTF-8"></script>
+<script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({"notice_banner_type":"simple","consent_type":"express","palette":"light","language":"en","page_load_consent_levels":["strictly-necessary"],"notice_banner_reject_button_hide":false,"preferences_center_close_button_hide":false,"page_refresh_confirmation_buttons":false,"website_name":"SPSP Primary School","website_privacy_policy_url":"https://www.claypool.bolton.sch.uk/privacy-policy/"});
+});
+</script>
+
+Replace
+"website_name":"SPSP Primary School","website_privacy_policy_url":"https://www.claypool.bolton.sch.uk/privacy-policy/"});
+});
+
+page_refresh_confirmation_buttons":false,"website_name":"Bolton Schools ICT","website_privacy_policy_url":"https://learninghub.bolton365.net/privacy-policy/"});
