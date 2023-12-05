@@ -9,14 +9,14 @@
  * that starts the plugin.
  *
  * @link              https://www.linkedin.com/in/taner-temel-ba7b9844
- * @since             0.0.1
+ * @since             0.0.4
  * @package           Bsict_Extention
  *
  * @wordpress-plugin
  * Plugin Name:       Bolton SICT Extention
  * Plugin URI:        https://www.bolton365.net
  * Description:       Extend Bolton SICT site functionality, do not disable it.
- * Version:           0.0.7
+ * Version:           0.7.1
  * Author:            Taner Temel
  * Author URI:        https://www.linkedin.com/in/taner-temel-ba7b9844
  * License:           GPL-2.0+
@@ -28,7 +28,6 @@
 // Include the new admin settings page file
 require_once( plugin_dir_path( __FILE__ ) . 'bsict_extention_admin.php' );
 /*------------------------------------------------*/
-
 /* SICT Login Logo */
 function my_login_logo() { ?>
   <style type="text/css">
@@ -52,7 +51,7 @@ add_filter( 'login_headerurl', 'my_login_logo_url' );
 function my_login_logo_url_title() {
   return 'Bolton Schools ICT';
 }
-add_filter( 'login_headertext', 'my_login_logo_url_title' );
+add_filter( 'login_headertitle', 'my_login_logo_url_title' );
 
 /*------------------------------------------------*/
 /* Login BG Image */
@@ -67,7 +66,7 @@ function login_background_image() {
 /*------------------------------------------------*/
 /*-- Enqueue custom CSS file --*/
 function sictext_enqueue_styles() {
-  wp_enqueue_style( 'sictext-custom-styles', plugins_url( '/css/custom-styles.css', __FILE__ ), array(), '1.0' );
+  wp_enqueue_style( 'sictext-custom-styles', plugins_url( '/assets/css/custom-styles.css', __FILE__ ), array(), '1.0' );
 }
 // Hook the function to the wp_enqueue_scripts action hook
 add_action( 'wp_enqueue_scripts', 'sictext_enqueue_styles' );
@@ -79,7 +78,7 @@ function cookie_javascript() {
 <script type="text/javascript" src="//www.freeprivacypolicy.com/public/cookie-consent/4.1.0/cookie-consent.js" charset="UTF-8"></script>
 <script type="text/javascript" charset="UTF-8">
 document.addEventListener('DOMContentLoaded', function () {
-cookieconsent.run({"notice_banner_type":"standalone","consent_type":"express","palette":"light","language":"en","page_load_consent_levels":["strictly-necessary"],"notice_banner_reject_button_hide":false,"preferences_center_close_button_hide":false,"page_refresh_confirmation_buttons":false,"website_name":"Schools ICT","website_privacy_policy_url":"/privacy-policy/"});
+cookieconsent.run({"notice_banner_type":"simple","consent_type":"express","palette":"light","language":"en","page_load_consent_levels":["strictly-necessary"],"notice_banner_reject_button_hide":false,"preferences_center_close_button_hide":false,"page_refresh_confirmation_buttons":false});
 });
 </script>
 

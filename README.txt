@@ -58,7 +58,6 @@ function update_user_option_admin_color( $color_scheme ) {
     $color_scheme = 'midnight';
     return $color_scheme;
 }
-/*------------------------------------------------*/
 /*-- Sender email address --*/
 function wpb_sender_email( $original_email_address ) {
     return 'school@bolton.education';
@@ -85,7 +84,7 @@ function my_enqueue_scripts() {
   // Register the script
   wp_register_script(
     'my-script',
-    plugins_url('/js/gh-snow.js', __FILE__),
+    plugins_url('/assets/js/gh-snow.js', __FILE__),
     array('jquery'),
     '1.0.0',
     true
@@ -95,6 +94,7 @@ function my_enqueue_scripts() {
   wp_enqueue_script('my-script');
 }
 /*------------------------------------------------*/
+
 = What about foo bar? =
 
 Answer to foo bar dilemma.
