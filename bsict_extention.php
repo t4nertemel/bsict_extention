@@ -58,7 +58,7 @@ add_filter( 'login_headertitle', 'my_login_logo_url_title' );
 function login_background_image() {
   echo '<style type="text/css">
   body.login{
-  background-image: url( "https://res.cloudinary.com/bolton-schools-ict/image/upload/v1685541677/Bolton%20SICT/Pngtreecartoon_books_sunflowers.png" )!important;
+  background-image: url( "https://ik.imagekit.io/eei82mxvvgg/Bolton%20SICT/Pngtreecartoon_books_sunflowers_RhRpwydBD.png?updatedAt=1710164790446" )!important;
   }
   </style>';
   }
