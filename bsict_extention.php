@@ -16,7 +16,7 @@
  * Plugin Name:       Bolton SICT Extention
  * Plugin URI:        https://www.bolton365.net
  * Description:       Extend Bolton SICT site functionality, do not disable it.
- * Version:           0.7.1
+ * Version:           0.7.3
  * Author:            Taner Temel
  * Author URI:        https://www.linkedin.com/in/taner-temel-ba7b9844
  * License:           GPL-2.0+
@@ -93,4 +93,42 @@ cookieconsent.run({"notice_banner_type":"simple","consent_type":"express","palet
 }
 add_action('wp_footer', 'cookie_javascript');
 /*------------------------------------------------*/
+/* Register Custom Dashboard Widget */
+function register_training_dashboard_widget() {
+  global $wp_meta_boxes;
+
+  wp_add_dashboard_widget(
+       'training_video_dashboard_widget',
+       'Website Training Videos',
+       'training_video__dashboard_widget_display'
+   );
+
+    $dashboard = $wp_meta_boxes['dashboard']['normal']['core'];
+
+   $my_widget = array(  'training_video_dashboard_widget' => $dashboard[ 'training_video_dashboard_widget'] );
+   unset( $dashboard[ 'mtraining_video_dashboard_widget' ] );
+
+    $sorted_dashboard = array_merge( $my_widget, $dashboard );
+    $wp_meta_boxes['dashboard']['normal']['core'] = $sorted_dashboard;
+}
+
+add_action('wp_dashboard_setup',  'register_training_dashboard_widget');
+
+function training_video__dashboard_widget_display() {
+   ?>
+<table style="width: 100%; border-collapse: collapse; margin-left: auto; margin-right: auto;" border="0" cellpadding="5px">
+<tbody>
+<tr>
+<td style="width: 100%; text-align: center;">
+<p><strong>Introduction</strong>: <br />This video provides a quick overview of your website and guides you through accessing the admin dashboard and editing pages/articles.<br /><a title="Introduction" href="https://bolton365net-my.sharepoint.com/:v:/g/personal/websitecontent_bolton365_net/EfTrK9CaXyFIo0U4XJzKWHkBGvw-3NxFcaXjLGXegc0k8w?e=wxKO9g&amp;referrer=Outlook.Web&amp;referrerScenario=email-linkwithembed" target="_blank" rel="noopener"><img src="https://ik.imagekit.io/eei82mxvvgg/Bolton%20SICT/intro_DVkx_Odwq.png?updatedAt=1715588099383" alt="" width="300" height="170" /></a></p>
+</td>
+</tr>
+<tr>
+<td style="width: 100%; text-align: center;"><strong>Using the block editor:</strong><br />Using the WordPress Block Editor: In this tutorial learn how to add and customise content blocks on your website&rsquo;s pages and posts.<br /><a title="Block Editor" href="https://bolton365net-my.sharepoint.com/:v:/g/personal/websitecontent_bolton365_net/EZYRh193ESxLirykKZpEnjIBHsa69USdyVgyX1jeTFeDsQ?e=ZCOUBW&amp;referrer=Outlook.Web&amp;referrerScenario=email-linkwithembed" target="_blank"><img style="display: block; margin-left: auto; margin-right: auto;" src="https://ik.imagekit.io/eei82mxvvgg/Bolton%20SICT/block-editor_30BulLj75.png?updatedAt=1715588099332" alt="Gutenberg Editor" width="300" height="169" /></a></td>
+</tr>
+</tbody>
+</table>
+
+<?php
+}
 ?>

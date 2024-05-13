@@ -109,9 +109,17 @@ directory take precedence. For example, `/assets/screenshot-1.png` would win ove
 
 == Changelog ==
 
+= 0.7.3 =
+* Added custom dashboard widget.
+* Added training videos to the admin dashboard.
+
+= 0.7.2 =
+* Updated CDN.
+* Migrated cdn form Cloudinary to Imagekit.
+
 = 0.7 =
 * Added snow storm effect.
-* Please add above now.
+* Add javascript hook.
 
 = 0.6 =
 * Rebuilt plugin adding new BSICT Plugin page to setting page
