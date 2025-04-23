@@ -16,7 +16,7 @@
  * Plugin Name:       Bolton SICT Extention
  * Plugin URI:        https://www.bolton365.net
  * Description:       Extend Bolton SICT site functionality, do not disable it.
- * Version:           0.7.3
+ * Version:           0.7.5
  * Author:            Taner Temel
  * Author URI:        https://www.linkedin.com/in/taner-temel-ba7b9844
  * License:           GPL-2.0+
@@ -130,5 +130,55 @@ function training_video__dashboard_widget_display() {
 </table>
 
 <?php
+}
+/* Register Custom Dashboard Review Widgets */
+function register_custom_dashboard_widgets() {
+  global $wp_meta_boxes;
+
+  // Register the existing training video widget
+  wp_add_dashboard_widget(
+      'training_video_dashboard_widget',
+      'Website Training Videos',
+      'training_video__dashboard_widget_display'
+  );
+
+  // Register the new "Book a Website Review" widget
+  wp_add_dashboard_widget(
+      'book_website_review_dashboard_widget',
+      'Book a Website Review',
+      'book_website_review_dashboard_widget_display'
+  );
+
+  // Sort the dashboard widgets
+  $dashboard = $wp_meta_boxes['dashboard']['normal']['core'];
+
+  // Sort the existing widget
+  $my_widget = array('training_video_dashboard_widget' => $dashboard['training_video_dashboard_widget']);
+  unset($dashboard['training_video_dashboard_widget']);
+
+  // Sort the new widget
+  $new_widget = array('book_website_review_dashboard_widget' => $dashboard['book_website_review_dashboard_widget']);
+  unset($dashboard['book_website_review_dashboard_widget']);
+
+  // Merge the widgets back together
+  $sorted_dashboard = array_merge($my_widget, $new_widget, $dashboard);
+  $wp_meta_boxes['dashboard']['normal']['core'] = $sorted_dashboard;
+}
+
+add_action('wp_dashboard_setup', 'register_custom_dashboard_widgets');
+
+/* Display Function for the New "Book a Website Review" Widget */
+function book_website_review_dashboard_widget_display() {
+  ?>
+  <div style="text-align: center;">
+      <h3>Book a Website Review</h3>
+      <p>Schedule a time to review your website and discuss improvements.</p>
+      <p>
+          <a href="https://outlook.office365.com/book/TanerTemel@Bolton365net.onmicrosoft.com/" target="_blank" style="font-size: 16px; color: #0073aa; text-decoration: underline;">
+              Click here to book your website review!
+          </a>
+      </p>
+  </div>
+  <?php
 }
 ?>
