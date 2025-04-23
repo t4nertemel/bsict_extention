@@ -3,8 +3,8 @@ Contributors: (https://profiles.wordpress.org/clu55ter/)
 Donate link: https://www.linkedin.com/in/taner-temel-ba7b9844
 Tags: bsict, functions
 Requires at least: 6.0.1
-Tested up to: 6.2
-Stable tag: 6.2
+Tested up to: 6.8
+Stable tag: 6.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
