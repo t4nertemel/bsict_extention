@@ -174,7 +174,7 @@ add_action('wp_dashboard_setup', 'register_custom_dashboard_widgets');
 function book_website_review_dashboard_widget_display() {
   ?>
   <div style="text-align: center;">
-      <h3>Book a Website Review</h3>
+      <h3>Book a website review with Bolton SICT</h3>
       <p>Schedule a time to review your website and discuss improvements.</p>
       <p>
           <a href="https://outlook.office365.com/book/TanerTemel@Bolton365net.onmicrosoft.com/" target="_blank" style="font-size: 16px; color: #0073aa; text-decoration: underline;">
