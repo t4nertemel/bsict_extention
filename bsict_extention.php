@@ -16,7 +16,7 @@
  * Plugin Name:       Bolton SICT Extention
  * Plugin URI:        https://www.bolton365.net
  * Description:       Extend Bolton SICT site functionality, do not disable it.
- * Version:           0.7.5
+ * Version:           0.7.6
  * Author:            Taner Temel
  * Author URI:        https://www.linkedin.com/in/taner-temel-ba7b9844
  * License:           GPL-2.0+
@@ -145,10 +145,10 @@ function register_custom_dashboard_widgets() {
       'training_video__dashboard_widget_display'
   );
 
-  // Register the new "Book a Website Review" widget
+  // Register the new "SICT Website Review" widget
   wp_add_dashboard_widget(
       'book_website_review_dashboard_widget',
-      'Book a Website Review',
+      'Unlock Your Websites True Potential.',
       'book_website_review_dashboard_widget_display'
   );
 
@@ -174,11 +174,10 @@ add_action('wp_dashboard_setup', 'register_custom_dashboard_widgets');
 function book_website_review_dashboard_widget_display() {
   ?>
   <div style="text-align: center;">
-      <h3>Book a website review with Bolton SICT</h3>
-      <p>Schedule a time to review your website and discuss improvements.</p>
-      <p>
-          <a href="https://outlook.office365.com/book/TanerTemel@Bolton365net.onmicrosoft.com/" target="_blank" style="font-size: 16px; color: #0073aa; text-decoration: underline;">
-              Click here to book your website review!
+      <h3>Book a website review with BoltonSICT</h3>
+      <p>Book a 30-minute personalised session, to identify opportunities to increase your online presents.</p>
+      <p><a href="https://outlook.office365.com/book/TanerTemel@Bolton365net.onmicrosoft.com/" target="_blank" style="font-size: 16px; color: #0073aa; text-decoration: underline;">
+              Schedule a Audit with the Webs Team >
           </a>
       </p>
   </div>
