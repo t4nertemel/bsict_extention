@@ -174,8 +174,8 @@ add_action('wp_dashboard_setup', 'register_custom_dashboard_widgets');
 function book_website_review_dashboard_widget_display() {
   ?>
   <div style="text-align: center;">
-      <h3>Book a website review with BoltonSICT</h3>
-      <p>Book a 30-minute personalised session, to identify opportunities to increase your online presents.</p>
+      <h3>Book a website review with Bolton SICT.</h3>
+      <p>Book a personalised review of your website's structure, content, and user experience. Identify opportunities and ensure Ofsted compliance.</p>
       <p><a href="https://outlook.office365.com/book/TanerTemel@Bolton365net.onmicrosoft.com/" target="_blank" style="font-size: 16px; color: #0073aa; text-decoration: underline;">
               Schedule a Audit with the Webs Team >
           </a>
