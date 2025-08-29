@@ -59,12 +59,14 @@ add_filter( 'login_headertitle', 'my_login_logo_url_title' );
 /* Login BG Image */
 function login_background_image() {
   echo '<style type="text/css">
-  body.login{
-  background-image: url( "https://ik.imagekit.io/eei82mxvvgg/Bolton%20SICT/Pngtreecartoon_books_sunflowers_RhRpwydBD.png?updatedAt=1710164790446" )!important;
-  }
+    body.login {
+      background-image: url("https://ik.imagekit.io/eei82mxvvgg/Bolton%20SICT/Pngtreecartoon_books_sunflowers_RhRpwydBD.png?updatedAt=1710164790446") !important;
+      background-size: cover;
+      background-position: center;
+    }
   </style>';
-  }
-  add_action('login_head', 'login_background_image');
+}
+add_action('login_enqueue_scripts', 'login_background_image');
 /*------------------------------------------------*/
 /*-- Enqueue custom CSS file --*/
 function sictext_enqueue_styles() {
