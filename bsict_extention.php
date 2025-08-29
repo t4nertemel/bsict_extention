@@ -17,6 +17,8 @@
  * Plugin URI:        https://www.bolton365.net
  * Description:       Extend Bolton SICT site functionality, do not disable it.
  * Version:           0.7.6
+ * Requires at least: 5.2
+ * Requires PHP: 7.2
  * Author:            Taner Temel
  * Author URI:        https://www.linkedin.com/in/taner-temel-ba7b9844
  * License:           GPL-2.0+
@@ -31,14 +33,14 @@ require_once( plugin_dir_path( __FILE__ ) . 'bsict_extention_admin.php' );
 /* SICT Login Logo */
 function my_login_logo() { ?>
   <style type="text/css">
-      #login h1 a, .login h1 a {
-        background-image: url(<?php plugin_dir_path(__DIR__); ?>wp-content/plugins/bsict_extention/assets/images/sict-logo.png);
-  height:90px;
-  width:250px;
-  background-size: 250px 90px;
-  background-repeat: no-repeat;
-        padding-bottom: 0px;
-      }
+    #login h1 a, .login h1 a {
+      background-image: url('<?php echo plugins_url( 'assets/images/sict-logo.png', __FILE__ ); ?>');
+      height: 90px;
+      width: 250px;
+      background-size: 250px 90px;
+      background-repeat: no-repeat;
+      padding-bottom: 30px;
+    }
   </style>
 <?php }
 add_action( 'login_enqueue_scripts', 'my_login_logo' );
@@ -145,10 +147,10 @@ function register_custom_dashboard_widgets() {
       'training_video__dashboard_widget_display'
   );
 
-  // Register the new "SICT Website Review" widget
+  // Register the new "Book a Website Review" widget
   wp_add_dashboard_widget(
       'book_website_review_dashboard_widget',
-      'Unlock Your Websites True Potential.',
+      'Book a Website Review',
       'book_website_review_dashboard_widget_display'
   );
 
@@ -174,10 +176,11 @@ add_action('wp_dashboard_setup', 'register_custom_dashboard_widgets');
 function book_website_review_dashboard_widget_display() {
   ?>
   <div style="text-align: center;">
-      <h3>Book a website review with Bolton SICT.</h3>
-      <p>Book a personalised review of your website's structure, content, and user experience. Identify opportunities and ensure Ofsted compliance.</p>
-      <p><a href="https://outlook.office365.com/book/TanerTemel@Bolton365net.onmicrosoft.com/" target="_blank" style="font-size: 16px; color: #0073aa; text-decoration: underline;">
-              Schedule a Audit with the Webs Team >
+      <h3>Book a Website Review</h3>
+      <p>Schedule a time to review your website and discuss improvements.</p>
+      <p>
+          <a href="https://outlook.office365.com/book/TanerTemel@Bolton365net.onmicrosoft.com/" target="_blank" style="font-size: 16px; color: #0073aa; text-decoration: underline;">
+              Click here to book your website review!
           </a>
       </p>
   </div>
