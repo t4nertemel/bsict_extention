@@ -97,26 +97,6 @@ cookieconsent.run({"notice_banner_type":"simple","consent_type":"express","palet
 }
 add_action('wp_footer', 'cookie_javascript');
 /*------------------------------------------------*/
-/* Register Custom Dashboard Widget */
-function register_training_dashboard_widget() {
-  global $wp_meta_boxes;
-
-  wp_add_dashboard_widget(
-       'training_video_dashboard_widget',
-       'Website Training Videos',
-       'training_video__dashboard_widget_display'
-   );
-
-    $dashboard = $wp_meta_boxes['dashboard']['normal']['core'];
-
-   $my_widget = array(  'training_video_dashboard_widget' => $dashboard[ 'training_video_dashboard_widget'] );
-   unset( $dashboard[ 'mtraining_video_dashboard_widget' ] );
-
-    $sorted_dashboard = array_merge( $my_widget, $dashboard );
-    $wp_meta_boxes['dashboard']['normal']['core'] = $sorted_dashboard;
-}
-
-add_action('wp_dashboard_setup',  'register_training_dashboard_widget');
 
 function training_video__dashboard_widget_display() {
    ?>
@@ -140,37 +120,22 @@ function training_video__dashboard_widget_display() {
 }
 /* Register Custom Dashboard Review Widgets */
 function register_custom_dashboard_widgets() {
-  global $wp_meta_boxes;
-
-  // Register the existing training video widget
   wp_add_dashboard_widget(
-      'training_video_dashboard_widget',
-      'Website Training Videos',
-      'training_video__dashboard_widget_display'
+    'training_video_dashboard_widget',
+    '🥷 Website Training Videos',
+    'training_video__dashboard_widget_display'
   );
 
-  // Register the new "Book a Website Review" widget
   wp_add_dashboard_widget(
-      'book_website_review_dashboard_widget',
-      'Book a Website Review',
-      'book_website_review_dashboard_widget_display'
+    'book_website_review_dashboard_widget',
+    '✔️ Book a Website Review',
+    'book_website_review_dashboard_widget_display'
   );
-
-  // Sort the dashboard widgets
-  $dashboard = $wp_meta_boxes['dashboard']['normal']['core'];
-
-  // Sort the existing widget
-  $my_widget = array('training_video_dashboard_widget' => $dashboard['training_video_dashboard_widget']);
-  unset($dashboard['training_video_dashboard_widget']);
-
-  // Sort the new widget
-  $new_widget = array('book_website_review_dashboard_widget' => $dashboard['book_website_review_dashboard_widget']);
-  unset($dashboard['book_website_review_dashboard_widget']);
-
-  // Merge the widgets back together
-  $sorted_dashboard = array_merge($my_widget, $new_widget, $dashboard);
-  $wp_meta_boxes['dashboard']['normal']['core'] = $sorted_dashboard;
 }
+
+add_action('wp_dashboard_setup', 'register_custom_dashboard_widgets');
+
+// Optional: Sort widgets (advanced), but not required unless ordering matters
 
 add_action('wp_dashboard_setup', 'register_custom_dashboard_widgets');
 
