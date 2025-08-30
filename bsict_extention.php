@@ -114,7 +114,7 @@ function training_video__dashboard_widget_display() {
 <td style="width: 100%; text-align: center;"><strong>Using the block editor:</strong><br />Using the WordPress Block Editor: In this tutorial learn how to add and customise content blocks on your website&rsquo;s pages and posts.<br /><a title="Block Editor" href="https://bolton365net-my.sharepoint.com/:v:/g/personal/websitecontent_bolton365_net/EZYRh193ESxLirykKZpEnjIBHsa69USdyVgyX1jeTFeDsQ?e=ZCOUBW&amp;referrer=Outlook.Web&amp;referrerScenario=email-linkwithembed" target="_blank"><img style="display: block; margin-left: auto; margin-right: auto;" src="https://ik.imagekit.io/eei82mxvvgg/Bolton%20SICT/block-editor_30BulLj75.png?updatedAt=1715588099332" alt="Gutenberg Editor" width="300" height="169" /></a></td>
 </tr>
 <tr> 
-<td style="width: 100%; text-align: center;"><strong>WordPress Media Library:</strong><br />Using the WordPress Media Library.<br /><a title="WordPress Media Libarary" href="https://www.youtube.com/watch?v=PcsythkdHrI" target="_blank" rel="noopener"><img style="display: block; margin-left: auto; margin-right: auto;" src="https://ik.imagekit.io/eei82mxvvgg/Bolton%20SICT/media-library_YO3mrstKy.jpg?updatedAt=1720444278952" alt="Media Library" width="300" height="169" /></a></td> 
+<td style="width: 100%; text-align: center;"><strong>WordPress Media Library:</strong><br />Using the WordPress Media Library.<br /><a title="WordPress Media Libarary" href="https://www.youtube.com/watch?v=PcsythkdHrI" target="_blank"><img style="display: block; margin-left: auto; margin-right: auto;" src="https://ik.imagekit.io/eei82mxvvgg/Bolton%20SICT/media-library_YO3mrstKy.jpg?updatedAt=1720444278952" alt="Media Library" width="300" height="169" /></a></td> 
 </tr>
 </tbody>
 </table>
@@ -149,7 +149,7 @@ function book_website_review_dashboard_widget_display() {
       <h3>Book a Website Review</h3>
       <p>Schedule a time to review your website and discuss improvements.</p>
       <p>
-          <a href="https://outlook.office365.com/book/TanerTemel@Bolton365net.onmicrosoft.com/" target="_blank" rel="noopener" style="font-size: 16px; color: #0073aa; text-decoration: underline;">
+          <a href="https://outlook.office365.com/book/TanerTemel@Bolton365net.onmicrosoft.com/" target="_blank" style="font-size: 16px; color: #0073aa; text-decoration: underline;">
               Click here to book your website review!
           </a>
       </p>
