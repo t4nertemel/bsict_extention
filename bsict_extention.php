@@ -1,6 +1,5 @@
 <?php
-// Prevent direct access
-defined( 'ABSPATH' ) || exit;
+
 /**
  * The plugin bootstrap file
  *
@@ -14,10 +13,10 @@ defined( 'ABSPATH' ) || exit;
  * @package           Bsict_Extention
  *
  * @wordpress-plugin
- * Plugin Name:       Bolton SICT Extentsion
+ * Plugin Name:       Bolton SICT Extention
  * Plugin URI:        https://www.bolton365.net
  * Description:       Extend Bolton SICT site functionality, do not disable it.
- * Version:           0.7.6
+ * Version:           0.7.5
  * Requires at least: 5.2
  * Requires PHP: 7.2
  * Author:            Taner Temel
@@ -27,20 +26,21 @@ defined( 'ABSPATH' ) || exit;
  * Text Domain:       bsict-extention
  * Domain Path:       /languages
  */
+/*------------------------------------------------*/
 // Include the new admin settings page file
 require_once( plugin_dir_path( __FILE__ ) . 'bsict_extention_admin.php' );
-
+/*------------------------------------------------*/
 /* SICT Login Logo */
 function my_login_logo() { ?>
   <style type="text/css">
-    #login h1 a, .login h1 a {
-      background-image: url('<?php echo plugins_url( 'assets/images/sict-logo.png', __FILE__ ); ?>');
-      height: 90px;
-      width: 250px;
-      background-size: 250px 90px;
-      background-repeat: no-repeat;
-      padding-bottom: 30px;
-    }
+      #login h1 a, .login h1 a {
+        background-image: url(<?php plugin_dir_path(__DIR__); ?>wp-content/plugins/bsict_extention/assets/images/sict-logo.png);
+  height:90px;
+  width:250px;
+  background-size: 250px 90px;
+  background-repeat: no-repeat;
+        padding-bottom: 0px;
+      }
   </style>
 <?php }
 add_action( 'login_enqueue_scripts', 'my_login_logo' );
@@ -55,30 +55,24 @@ function my_login_logo_url_title() {
 }
 add_filter( 'login_headertitle', 'my_login_logo_url_title' );
 
+/*------------------------------------------------*/
 /* Login BG Image */
 function login_background_image() {
   echo '<style type="text/css">
-    body.login {
-      background-image: url("https://ik.imagekit.io/eei82mxvvgg/Bolton%20SICT/Pngtreecartoon_books_sunflowers_RhRpwydBD.png?updatedAt=1710164790446") !important;
-      background-size: cover;
-      background-position: center;
-    }
+  body.login{
+  background-image: url( "https://ik.imagekit.io/eei82mxvvgg/Bolton%20SICT/Pngtreecartoon_books_sunflowers_RhRpwydBD.png?updatedAt=1710164790446" )!important;
+  }
   </style>';
-}
-add_action('login_enqueue_scripts', 'login_background_image');
-
-/* Enqueue custom CSS file */
+  }
+  add_action('login_head', 'login_background_image');
+/*------------------------------------------------*/
+/*-- Enqueue custom CSS file --*/
 function sictext_enqueue_styles() {
-  wp_enqueue_style(
-  'sictext-custom-styles',
-  plugins_url( '/assets/css/custom-styles.css', __FILE__ ),
-  array(),
-  filemtime( plugin_dir_path( __FILE__ ) . 'assets/css/custom-styles.css' )
-);
+  wp_enqueue_style( 'sictext-custom-styles', plugins_url( '/assets/css/custom-styles.css', __FILE__ ), array(), '1.0' );
 }
 // Hook the function to the wp_enqueue_scripts action hook
 add_action( 'wp_enqueue_scripts', 'sictext_enqueue_styles' );
-
+/*------------------------------------------------*/
 /* Cookie Consent Script */
 function cookie_javascript() {
   ?>
@@ -100,6 +94,27 @@ cookieconsent.run({"notice_banner_type":"simple","consent_type":"express","palet
   <?php
 }
 add_action('wp_footer', 'cookie_javascript');
+/*------------------------------------------------*/
+/* Register Custom Dashboard Widget */
+function register_training_dashboard_widget() {
+  global $wp_meta_boxes;
+
+  wp_add_dashboard_widget(
+       'training_video_dashboard_widget',
+       'Website Training Videos',
+       'training_video__dashboard_widget_display'
+   );
+
+    $dashboard = $wp_meta_boxes['dashboard']['normal']['core'];
+
+   $my_widget = array(  'training_video_dashboard_widget' => $dashboard[ 'training_video_dashboard_widget'] );
+   unset( $dashboard[ 'mtraining_video_dashboard_widget' ] );
+
+    $sorted_dashboard = array_merge( $my_widget, $dashboard );
+    $wp_meta_boxes['dashboard']['normal']['core'] = $sorted_dashboard;
+}
+
+add_action('wp_dashboard_setup',  'register_training_dashboard_widget');
 
 function training_video__dashboard_widget_display() {
    ?>
@@ -114,7 +129,7 @@ function training_video__dashboard_widget_display() {
 <td style="width: 100%; text-align: center;"><strong>Using the block editor:</strong><br />Using the WordPress Block Editor: In this tutorial learn how to add and customise content blocks on your website&rsquo;s pages and posts.<br /><a title="Block Editor" href="https://bolton365net-my.sharepoint.com/:v:/g/personal/websitecontent_bolton365_net/EZYRh193ESxLirykKZpEnjIBHsa69USdyVgyX1jeTFeDsQ?e=ZCOUBW&amp;referrer=Outlook.Web&amp;referrerScenario=email-linkwithembed" target="_blank"><img style="display: block; margin-left: auto; margin-right: auto;" src="https://ik.imagekit.io/eei82mxvvgg/Bolton%20SICT/block-editor_30BulLj75.png?updatedAt=1715588099332" alt="Gutenberg Editor" width="300" height="169" /></a></td>
 </tr>
 <tr> 
-<td style="width: 100%; text-align: center;"><strong>WordPress Media Library:</strong><br />Using the WordPress Media Library.<br /><a title="WordPress Media Libarary" href="https://www.youtube.com/watch?v=PcsythkdHrI" target="_blank" rel="noopener"><img style="display: block; margin-left: auto; margin-right: auto;" src="https://ik.imagekit.io/eei82mxvvgg/Bolton%20SICT/media-library_YO3mrstKy.jpg?updatedAt=1720444278952" alt="Media Library" width="300" height="169" /></a></td> 
+<td style="width: 100%; text-align: center;"><strong>WordPress Media Library:</strong><br />Using the WordPress Media Library.<br /><a title="WordPress Media Libarary" href="https://www.youtube.com/watch?v=PcsythkdHrI" target="_blank"><img style="display: block; margin-left: auto; margin-right: auto;" src="https://ik.imagekit.io/eei82mxvvgg/Bolton%20SICT/media-library_YO3mrstKy.jpg?updatedAt=1720444278952" alt="Media Library" width="300" height="169" /></a></td> 
 </tr>
 </tbody>
 </table>
@@ -123,22 +138,37 @@ function training_video__dashboard_widget_display() {
 }
 /* Register Custom Dashboard Review Widgets */
 function register_custom_dashboard_widgets() {
+  global $wp_meta_boxes;
+
+  // Register the existing training video widget
   wp_add_dashboard_widget(
-    'training_video_dashboard_widget',
-    '🥷 Website Training Videos',
-    'training_video_dashboard_widget_display'
+      'training_video_dashboard_widget',
+      'Website Training Videos',
+      'training_video__dashboard_widget_display'
   );
 
+  // Register the new "Book a Website Review" widget
   wp_add_dashboard_widget(
-    'book_website_review_dashboard_widget',
-    '✔️ Book a Website Review',
-    'book_website_review_dashboard_widget_display'
+      'book_website_review_dashboard_widget',
+      'Book a Website Review',
+      'book_website_review_dashboard_widget_display'
   );
+
+  // Sort the dashboard widgets
+  $dashboard = $wp_meta_boxes['dashboard']['normal']['core'];
+
+  // Sort the existing widget
+  $my_widget = array('training_video_dashboard_widget' => $dashboard['training_video_dashboard_widget']);
+  unset($dashboard['training_video_dashboard_widget']);
+
+  // Sort the new widget
+  $new_widget = array('book_website_review_dashboard_widget' => $dashboard['book_website_review_dashboard_widget']);
+  unset($dashboard['book_website_review_dashboard_widget']);
+
+  // Merge the widgets back together
+  $sorted_dashboard = array_merge($my_widget, $new_widget, $dashboard);
+  $wp_meta_boxes['dashboard']['normal']['core'] = $sorted_dashboard;
 }
-
-add_action('wp_dashboard_setup', 'register_custom_dashboard_widgets');
-
-// Optional: Sort widgets (advanced), but not required unless ordering matters
 
 add_action('wp_dashboard_setup', 'register_custom_dashboard_widgets');
 
@@ -146,19 +176,14 @@ add_action('wp_dashboard_setup', 'register_custom_dashboard_widgets');
 function book_website_review_dashboard_widget_display() {
   ?>
   <div style="text-align: center;">
-      <h3>Book a Website Review</h3>
+      <h3>Book a BSICT Website Review</h3>
       <p>Schedule a time to review your website and discuss improvements.</p>
       <p>
-          <a href="https://outlook.office365.com/book/TanerTemel@Bolton365net.onmicrosoft.com/" target="_blank" rel="noopener" style="font-size: 16px; color: #0073aa; text-decoration: underline;">
+          <a href="https://outlook.office365.com/book/TanerTemel@Bolton365net.onmicrosoft.com/" target="_blank" style="font-size: 16px; color: #0073aa; text-decoration: underline;">
               Click here to book your website review!
           </a>
       </p>
   </div>
   <?php
 }
-/**
- * Class Calculator
- *
- * This class provides basic arithmetic operations.
- */
 ?>
