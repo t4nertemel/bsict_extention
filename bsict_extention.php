@@ -1,5 +1,6 @@
 <?php
-
+// Prevent direct access
+defined( 'ABSPATH' ) || exit;
 /**
  * The plugin bootstrap file
  *
@@ -26,10 +27,9 @@
  * Text Domain:       bsict-extention
  * Domain Path:       /languages
  */
-/*------------------------------------------------*/
 // Include the new admin settings page file
 require_once( plugin_dir_path( __FILE__ ) . 'bsict_extention_admin.php' );
-/*------------------------------------------------*/
+
 /* SICT Login Logo */
 function my_login_logo() { ?>
   <style type="text/css">
@@ -55,7 +55,6 @@ function my_login_logo_url_title() {
 }
 add_filter( 'login_headertitle', 'my_login_logo_url_title' );
 
-/*------------------------------------------------*/
 /* Login BG Image */
 function login_background_image() {
   echo '<style type="text/css">
@@ -67,8 +66,8 @@ function login_background_image() {
   </style>';
 }
 add_action('login_enqueue_scripts', 'login_background_image');
-/*------------------------------------------------*/
-/*-- Enqueue custom CSS file --*/
+
+/* Enqueue custom CSS file */
 function sictext_enqueue_styles() {
   wp_enqueue_style(
   'sictext-custom-styles',
@@ -79,7 +78,7 @@ function sictext_enqueue_styles() {
 }
 // Hook the function to the wp_enqueue_scripts action hook
 add_action( 'wp_enqueue_scripts', 'sictext_enqueue_styles' );
-/*------------------------------------------------*/
+
 /* Cookie Consent Script */
 function cookie_javascript() {
   ?>
@@ -101,7 +100,6 @@ cookieconsent.run({"notice_banner_type":"simple","consent_type":"express","palet
   <?php
 }
 add_action('wp_footer', 'cookie_javascript');
-/*------------------------------------------------*/
 
 function training_video__dashboard_widget_display() {
    ?>
@@ -158,4 +156,9 @@ function book_website_review_dashboard_widget_display() {
   </div>
   <?php
 }
+/**
+ * Class Calculator
+ *
+ * This class provides basic arithmetic operations.
+ */
 ?>
