@@ -69,7 +69,12 @@ add_action('login_enqueue_scripts', 'login_background_image');
 
 /* Enqueue custom CSS file */
 function sictext_enqueue_styles() {
-  wp_enqueue_style( 'sictext-custom-styles', plugins_url( '/assets/css/custom-styles.css', __FILE__ ), array(), '1.0' );
+  wp_enqueue_style(
+  'sictext-custom-styles',
+  plugins_url( '/assets/css/custom-styles.css', __FILE__ ),
+  array(),
+  filemtime( plugin_dir_path( __FILE__ ) . 'assets/css/custom-styles.css' )
+);
 }
 // Hook the function to the wp_enqueue_scripts action hook
 add_action( 'wp_enqueue_scripts', 'sictext_enqueue_styles' );
