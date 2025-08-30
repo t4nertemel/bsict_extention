@@ -10,6 +10,18 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Here is a short description of the plugin.  This should be no more than 150 characters.  No markup here.
 
+== Folder Structure ==
+
+/wp-content/plugins/bsict-extension/
+├── bsict-extension.php
+├── bsict_extention_admin.php
+├── assets/
+│   ├── css/
+│   │   └── custom-styles.css
+│   └── images/
+│       └── sict-logo.png
+└── languages/
+
 == Description ==
 
 Extend Bolton SICT site functionality, this plugin add a custom login page and a custom settings page to add functions through the admin panel.
@@ -93,7 +105,6 @@ function my_enqueue_scripts() {
   // Enqueue the script
   wp_enqueue_script('my-script');
 }
-/*------------------------------------------------*/
 
 = What about foo bar? =
 
@@ -109,16 +120,32 @@ directory take precedence. For example, `/assets/screenshot-1.png` would win ove
 
 == Changelog ==
 
-= 0.7.6 =
-* Updated custom dashboard widget.
-* Updated annual website review booking text.
+= 0.8.0
+
+* ✅ All previous fixes
+* ✅ Spelling corrected (Extension, not Extentsion)
+* ✅ Admin color scheme selector (dropdown)
+* ✅ Sync button to apply to all users
+* ✅ No eval() needed for color scheme
+* ✅ Secure settings with sanitization
+* ✅ Clean, professional UI
+
+= 0.7.6
+* ⚠️ Security: Insecure URL Output in Login Logo.
+* ⚠️ Security & Performance: External Scripts from Untrusted Sources (TO DO: Cookie Consent)
+* ❌ Deprecated Hook for Login Styles: login_head.
+* 🐞 Dashboard Widget Registration: Duplicate Code & Bug and typo.
+* 🌐 HTML & URL Issues: Extra Spaces in Links. ✅ Always use rel="noopener" when using target="_blank".
+* 📁 File Inclusion: Admin Page
+* ✅ Add this at the top of your main plugin file:
+* // Prevent direct access
+* defined( 'ABSPATH' ) || exit;
+* 🔤 Typo in Function Name. Removed extra underscore.
+* 📦 Plugin Naming & Text Domain typo
 
 = 0.7.5 =
 * Added custom dashboard widget.
 * Added annual website review booking to the admin dashboard.
-
-= 0.7.4 =
-*  
 
 = 0.7.3 =
 * Added custom dashboard widget.
