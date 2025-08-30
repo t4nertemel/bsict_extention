@@ -14,7 +14,7 @@ defined( 'ABSPATH' ) || exit;
  * @package           Bsict_Extention
  *
  * @wordpress-plugin
- * Plugin Name:       Bolton SICT Extention
+ * Plugin Name:       Bolton SICT Extentsion
  * Plugin URI:        https://www.bolton365.net
  * Description:       Extend Bolton SICT site functionality, do not disable it.
  * Version:           0.7.6
