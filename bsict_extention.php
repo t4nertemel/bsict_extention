@@ -126,7 +126,7 @@ function register_custom_dashboard_widgets() {
   wp_add_dashboard_widget(
     'training_video_dashboard_widget',
     '🥷 Website Training Videos',
-    'training_video__dashboard_widget_display'
+    'training_video_dashboard_widget_display'
   );
 
   wp_add_dashboard_widget(
