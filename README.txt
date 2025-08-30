@@ -24,6 +24,14 @@ Here is a short description of the plugin.  This should be no more than 150 char
 
 == Description ==
 
+* Features Now Included
+* ✅ Login branding - Logo, link, background
+* ✅ Dashboard widgets - Training videos + booking
+* ✅ Custom CSS/JS - With sanitization
+* ✅ Force admin color - Dropdown + sync
+* ✅ Reset button - Full reset with confirmation
+* ✅ Custom login message - HTML-enabled
+
 Extend Bolton SICT site functionality, this plugin add a custom login page and a custom settings page to add functions through the admin panel.
 
 For backwards compatibility, if this section is missing, the full length of the short description will be used, and
@@ -119,6 +127,12 @@ directory take precedence. For example, `/assets/screenshot-1.png` would win ove
 2. This is the second screen shot
 
 == Changelog ==
+
+= 0.8.1
+
+* ✅ Reset button - Resets all settings to default
+* ✅ Custom login message colour and font size (with HTML support)
+* ✅ Improved UI
 
 = 0.8.0
 

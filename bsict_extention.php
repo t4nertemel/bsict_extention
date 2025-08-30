@@ -10,7 +10,7 @@
  * Plugin Name:       Bolton SICT Extension
  * Plugin URI:        https://www.bolton365.net
  * Description:       Extend Bolton SICT site functionality safely. Do not disable.
- * Version:           0.8.0
+ * Version:           0.8.1
  * Requires at least: 5.2
  * Requires PHP:      7.2
  * Author:            Taner Temel
@@ -42,6 +42,22 @@ function bsict_login_logo() { ?>
 <?php }
 add_action( 'login_enqueue_scripts', 'bsict_login_logo' );
 
+// Enqueue color picker on settings page only
+add_action( 'admin_enqueue_scripts', 'bsict_admin_enqueue_scripts' );
+function bsict_admin_enqueue_scripts( $hook ) {
+  if ( $hook !== 'settings_page_bsict-plugin-settings' ) {
+    return;
+  }
+  wp_enqueue_script( 'wp-color-picker' );
+  wp_enqueue_style( 'wp-color-picker' );
+  wp_enqueue_script( 'wp-color-picker-alpha', plugin_dir_url( __FILE__ ) . 'assets/js/wp-color-picker-alpha.js', array( 'wp-color-picker' ), '3.0.0', true );
+  wp_add_inline_script( 'wp-color-picker-alpha', '
+    jQuery(document).ready(function($) {
+      $(".bsict-color-picker").wpColorPicker();
+    });
+  ' );
+}
+
 /* 2. Login Logo Link */
 function bsict_login_logo_url() {
   return home_url();
@@ -67,6 +83,7 @@ function bsict_login_background() { ?>
 add_action( 'login_enqueue_scripts', 'bsict_login_background' );
 
 /* 4. Enqueue Custom CSS */
+
 function bsict_enqueue_custom_styles() {
   $css_file = plugin_dir_path( __FILE__ ) . 'assets/css/custom-styles.css';
   $version = file_exists( $css_file ) ? filemtime( $css_file ) : '1.0';
@@ -127,13 +144,13 @@ function bsict_review_widget() { ?>
 function bsict_register_dashboard_widgets() {
   wp_add_dashboard_widget(
     'bsict_training_widget',
-    'Website Training Videos',
+    '🎓 Website Training Videos',
     'bsict_training_video_widget'
   );
 
   wp_add_dashboard_widget(
     'bsict_review_widget',
-    'Book a Website Review',
+    '🥇 Book a Website Review',
     'bsict_review_widget'
   );
 }
