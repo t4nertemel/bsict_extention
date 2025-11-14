@@ -46,12 +46,12 @@ function my_enqueue_scripts() {
 <script type="text/javascript" src="//www.freeprivacypolicy.com/public/cookie-consent/4.1.0/cookie-consent.js" charset="UTF-8"></script>
 <script type="text/javascript" charset="UTF-8">
 document.addEventListener('DOMContentLoaded', function () {
-cookieconsent.run({"notice_banner_type":"simple","consent_type":"express","palette":"light","language":"en","page_load_consent_levels":["strictly-necessary"],"notice_banner_reject_button_hide":false,"preferences_center_close_button_hide":false,"page_refresh_confirmation_buttons":false,"website_name":"SPSP Primary School","website_privacy_policy_url":"https://www.claypool.bolton.sch.uk/privacy-policy/"});
+cookieconsent.run({"notice_banner_type":"simple","consent_type":"express","palette":"light","language":"en","page_load_consent_levels":["strictly-necessary"],"notice_banner_reject_button_hide":false,"preferences_center_close_button_hide":false,"page_refresh_confirmation_buttons":false,"website_name":"SPSP Primary School","website_privacy_policy_url":"#"});
 });
 </script>
 
 Replace
-"website_name":"SPSP Primary School","website_privacy_policy_url":"https://www.claypool.bolton.sch.uk/privacy-policy/"});
+"website_name":"SPSP Primary School","website_privacy_policy_url":"#"});
 });
 
 page_refresh_confirmation_buttons":false,"website_name":"Bolton Schools ICT","website_privacy_policy_url":"https://learninghub.bolton365.net/privacy-policy/"});

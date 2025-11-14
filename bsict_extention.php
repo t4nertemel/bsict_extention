@@ -10,7 +10,7 @@
  * Plugin Name:       Bolton SICT Extension
  * Plugin URI:        https://www.bolton365.net
  * Description:       Extend Bolton SICT site functionality safely. Do not disable.
- * Version:           0.8.1
+ * Version:           0.8.2
  * Requires at least: 5.2
  * Requires PHP:      7.2
  * Author:            Taner Temel
@@ -96,6 +96,30 @@ function bsict_enqueue_custom_styles() {
   );
 }
 add_action( 'wp_enqueue_scripts', 'bsict_enqueue_custom_styles' );
+
+/*------------------------------------------------*/
+/* Cookie Consent Script */
+function bsict_cookie_javascript() { // Renamed function for consistency with new naming scheme
+  ?>
+<!-- Cookie Consent by FreePrivacyPolicy.com https://www.FreePrivacyPolicy.com   -->
+<script type="text/javascript" src="//www.freeprivacypolicy.com/public/cookie-consent/4.1.0/cookie-consent.js" charset="UTF-8"></script>
+<script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+window.cookieconsent.run({"notice_banner_type":"simple","consent_type":"express","palette":"light","language":"en","page_load_consent_levels":["strictly-necessary"],"notice_banner_reject_button_hide":false,"preferences_center_close_button_hide":false,"page_refresh_confirmation_buttons":false});
+});
+</script>
+
+<noscript>Cookie Consent by <a href="https://www.freeprivacypolicy.com/">Free Privacy Policy Generator</a></noscript>
+<!-- End Cookie Consent by FreePrivacyPolicy.com https://www.FreePrivacyPolicy.com   -->
+
+<!-- Below is the link that users can use to open Preferences Center to change their preferences. Do not modify the ID parameter. Place it where appropriate, style it as needed. -->
+
+<a href="#" id="open_preferences_center">Update cookies preferences</a>
+
+  <?php
+}
+add_action('wp_footer', 'bsict_cookie_javascript'); // Hook it to wp_footer
+/*------------------------------------------------*/
 
 /* 5. Dashboard Widgets */
 function bsict_training_video_widget() { ?>

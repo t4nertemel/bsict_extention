@@ -64,14 +64,21 @@ This section describes how to install the plugin and get it working.
 e.g.
 
 1. Upload `bsict_extention.php` to the `/wp-content/plugins/` directory
-1. Activate the plugin through the 'Plugins' menu in WordPress
-1. Place `<?php do_action('plugin_name_hook'); ?>` in your templates
+2. Activate the plugin through the 'Plugins' menu in WordPress
+3. Place `<?php do_action('plugin_name_hook'); ?>` in your templates
 
 == Frequently Asked Questions ==
 
 = Do You have an example function to add from settings/BSICT Plugin page? =
 
 Below are some examples.
+/* Disable site health dashboard widget */
+add_action('wp_dashboard_setup', 'remove_site_health_dashboard_widget');
+function remove_site_health_dashboard_widget()
+{
+    remove_meta_box('dashboard_site_health', 'dashboard', 'normal');
+}
+
 /*-- Global dashboard color scheme --*/
 add_filter( 'get_user_option_admin_color', 'update_user_option_admin_color', 5 );
 function update_user_option_admin_color( $color_scheme ) {
